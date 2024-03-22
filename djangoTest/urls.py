@@ -20,6 +20,10 @@ from djangoTest import views
 from drf_yasg import openapi
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'fizzbuzz', views.FizzBuzzViewSet)
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -36,5 +40,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('fizzbuzz/<int:id>', views.fizzbuzz_detail),
     path('fizzbuzz', views.fizzbuzz),
+    path('browsable-api/', include(router.urls)),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

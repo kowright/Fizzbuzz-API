@@ -9,7 +9,8 @@ from rest_framework import status
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from rest_framework.views import APIView
-
+from rest_framework.viewsets import ModelViewSet
+from rest_framework import viewsets
 
 @swagger_auto_schema(
     method='GET',
@@ -34,6 +35,7 @@ from rest_framework.views import APIView
     responses={200: "Retrieved", 201: "Created", 400: "Could not create"}
 )
 @api_view(['GET', 'POST'])
+
 def fizzbuzz(request):
    
     if request.method == 'GET':
@@ -73,4 +75,9 @@ def fizzbuzz_detail(request, id):
     if request.method == 'GET':
         serializer = FizzBuzzSerializer(fizz)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
+
+
+class FizzBuzzViewSet(viewsets.ModelViewSet):
+    queryset = Fizzbuzz.objects.all()
+    serializer_class = FizzBuzzSerializer
+
