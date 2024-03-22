@@ -10,4 +10,4 @@ Run the following command to run tests.
 ```python manage.py test```
 
 ## Documentation 
-Visit this [link](http://127.0.0.1:8000/redoc) when the server is running to see documentation about the endpoint. 
+Visit this [link to redoc](http://127.0.0.1:8000/redoc) or this [link to browsable API](http://127.0.0.1:8000/browsable-api/) when the server is running to see documentation about the endpoint. 
